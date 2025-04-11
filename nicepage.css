@@ -1084,10 +1084,10 @@ ol {
 .u-button-style.u-border-no-top.u-border-no-right.u-border-no-bottom,
 .u-button-style.u-border-no-top.u-border-no-right.u-border-no-left,
 .u-btn-rectangle {
-  border-radius: 0 !important;
+  border-radius: 50px !important;
 }
 .u-button-style {
-  transition-property: background-color, color, border-color;
+  transition-property: background-color, color, ;
 }
 .u-text a,
 .u-post-content a,
@@ -3242,6 +3242,7 @@ footer > *,
 .u-sheet > *,
 .u-section-row > * {
   position: relative;
+ 
 }
 base {
   display: none;
@@ -18685,6 +18686,7 @@ p {
   content: "";
   display: block;
   transition-duration: inherit;
+
 }
 .u-container-style.u-hover-feature:hover:before,
 .u-container-style.u-hover-feature.hover:before {
@@ -44010,7 +44012,7 @@ a.u-link.u-text-hover-grey-90:hover {
         .u-table-alt-custom-color-4 tr:nth-child(even)
         {
             color: #111111;
-            background-color: #f1f8e4;
+            background-color: #e7eae0;
         }
 
         .u-input.u-custom-color-4,
@@ -44019,7 +44021,7 @@ a.u-link.u-text-hover-grey-90:hover {
         .u-button-style.u-custom-color-4[class*="u-border-"]
         {
             color: #111111 !important;
-            background-color: #f1f8e4 !important;
+            background-color: #e7eae0 !important;
         }
 
         .u-button-style.u-custom-color-4:hover,
@@ -44082,7 +44084,7 @@ a.u-link.u-text-hover-grey-90:hover {
         .u-table-alt-custom-color-5 tr:nth-child(even)
         {
             color: #111111;
-            background-color: #eed7a1;
+            background-color: #e4d0ac;
         }
 
         .u-input.u-custom-color-5,
@@ -44091,7 +44093,7 @@ a.u-link.u-text-hover-grey-90:hover {
         .u-button-style.u-custom-color-5[class*="u-border-"]
         {
             color: #111111 !important;
-            background-color: #eed7a1 !important;
+            background-color: #e4d0ac !important;
         }
 
         .u-button-style.u-custom-color-5:hover,
