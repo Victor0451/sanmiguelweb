@@ -7,6 +7,10 @@ import { site, contact, social } from '../data/site';
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-col footer-brand">
+      <!--
+        width/height encode the source aspect ratio (2099x1465) for CLS only;
+        the rendered size is owned by .footer-logo CSS below.
+      -->
       <Image src={logo} alt="" width={115} height={80} class="footer-logo" />
       <p class="footer-name">{site.name}</p>
       <div class="footer-social">

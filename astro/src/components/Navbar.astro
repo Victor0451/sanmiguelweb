@@ -14,6 +14,12 @@ const links = [
 <header class="navbar" id="inicio">
   <div class="container navbar-inner">
     <a href="/" class="navbar-brand" aria-label="San Miguel Sepelios — Inicio">
+      <!--
+        width/height encode the source aspect ratio (2099x1465) for CLS only;
+        the rendered size is owned by .navbar-logo CSS below.
+        loading="eager" overrides Astro Image's lazy default: the brand logo
+        is above the fold and must not wait for scroll.
+      -->
       <Image
         src={logo}
         alt="Logo San Miguel Sepelios"
