@@ -17,17 +17,20 @@ Rebuild the Nicepage static landing as a modern Astro project in `astro/` (same 
 
 ## Tasks
 
-- T1 (S1, S10): Scaffold Astro project in `astro/` — package.json, astro.config.mjs (static output, site URL placeholder), tsconfig, base dirs. — inline
-- T2 (S2, S8, S9): Global layout + design tokens — Base.astro layout, global.css with CSS custom properties palette/typography, fonts, reset; SEO head + JSON-LD. — inline
-- T3 (S3, S5, S9): Navbar + Footer components (sticky nav, hamburger, social icons, footer contact block). — inline
-- T4 (S3, S7): Hero + three info cards (Homenajear/Planificar/Salas) with optimized images. — inline
-- T5 (S4): Planes section — data module with 5 plans + PlanCard grid. — inline
-- T6 (S5, S6): Contact section — Formspree form + contact data (WhatsApp button, address, hours). — inline
-- T7 (S10): Build verification + responsive check + README deploy notes (Vercel Root Directory = astro/). — inline
+- T1 (S1, S10): Scaffold Astro project in `astro/` — DONE, commit f01af2f
+- T2 (S2, S8, S9): Global layout + design tokens — DONE, commit f01af2f
+- T3 (S3, S5, S9): Navbar + Footer components — DONE, commit f01af2f
+- T4 (S3, S7): Hero + three info cards — DONE, commit f01af2f
+- T5 (S4): Planes section (5 plans data + grid) — DONE, commit f01af2f
+- T6 (S5, S6): Contact section (Formspree + data) — DONE, commit f01af2f
+- T7 (S10): Build verification + README deploy notes — DONE, commit f01af2f
+
+Slice boundary note: the whole feature landed as one 1,559-authored-line slice (single commit f01af2f on feat/astro-redesign) because it is one new static site with no independently deployable behavior; delivery shape to be chosen at publish time.
 
 ## Log
 
 - L1 (user, verbatim): "papurri de mi corazon, analiza esta pag web servida en vercel. QUiero hacer una nueva pagina que siga siendo servida en vercel pero conla posibilidad de migrar a astros. La estetica vamos a rediseñarla pero basandonos en lo que tenemos (colores, letras, etc)"
 - L2 (user decisions): Astro directo desde el día 1; contenido real provisto ahora.
 - L3 (user data, verbatim): "1- +54 9 388 430-1608 / 2- {planes JSON: Ag=Plan Plata idplan 1, Au=Plan Oro idplan 2, Po=Plan Policia idplan 3, AgT=Plan Plata Traspaso idplan 4, AuT=Plan Oro Traspaso idplan 5} / 3- sede ubicada en España 379, Monterrico, Jujuy, de lunes a viernes de 9:00 a 13:00 hs. / 4- https://www.facebook.com/p/San-Miguel-Servicios-Sociales-61576559660002/ y https://www.instagram.com/p/DZaEUUZxRx1/ / 5- sanmiguelssociales@gmail.com / 6- improvisemos sobre esa base / 7- no tengo material nuevo, si te parece reutilizamos o regeneras en base a lo que esta / 8- que recomiendas?"
+- L5 (evidence): `npm run build` OK in astro/ (Astro 5.18.2, static output, 1 page, images optimized: hero 18MB→220KB WebP). dist checks PRESENT: real phone/wa.me link, 5 plan names, España 379, email, hours, JSON-LD, Formspree action; ABSENT: nicepage, jquery. dist total 428KB, index.html 24KB.
 - L4 (agent decisions, user may veto): mismo repo carpeta `astro/` + proyecto Vercel nuevo con Root Directory; WhatsApp con mismo número; grilla de 5 planes; Formspree; Instagram queda con URL de post + TODO; imágenes reutilizadas optimizadas.
