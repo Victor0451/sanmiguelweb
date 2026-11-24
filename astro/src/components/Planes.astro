@@ -1,0 +1,73 @@
+---
+import PlanCard from './PlanCard.astro';
+import { planes } from '../data/planes';
+---
+
+<section class="section section--suave" id="servicios" aria-labelledby="servicios-title">
+  <div class="container">
+    <h2 id="servicios-title" class="section-title">Cobertura de Sepelio</h2>
+    <p class="section-subtitle">
+      Cinco planes para anticiparte y proteger a tu grupo familiar.
+    </p>
+
+    <div class="planes-grid">
+      {
+        planes.map((plan) => (
+          <PlanCard plan={plan} featured={plan.idplan === 2} />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .planes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+
+  /* 5 cards on a 3-col grid: last row centers its 2 cards */
+  .planes-grid > :nth-child(4) {
+    grid-column: 1 / 2;
+  }
+
+  @media (min-width: 961px) {
+    .planes-grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+    .planes-grid > * {
+      grid-column: span 2;
+    }
+    .planes-grid > :nth-child(4) {
+      grid-column: 2 / span 2;
+    }
+    .planes-grid > :nth-child(5) {
+      grid-column: 4 / span 2;
+    }
+  }
+
+  @media (max-width: 960px) and (min-width: 601px) {
+    .planes-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .planes-grid > :nth-child(4) {
+      grid-column: auto;
+    }
+    .planes-grid > :last-child {
+      grid-column: 1 / -1;
+      max-width: 420px;
+      margin-inline: auto;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .planes-grid {
+      grid-template-columns: 1fr;
+    }
+    .planes-grid > :nth-child(4) {
+      grid-column: auto;
+    }
+  }
+</style>

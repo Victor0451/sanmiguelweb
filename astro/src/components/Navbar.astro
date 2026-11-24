@@ -1,0 +1,229 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo.png';
+import { social, contact } from '../data/site';
+
+const links = [
+  { href: '/', label: 'Inicio' },
+  { href: '#nosotros', label: 'Nosotros' },
+  { href: '#servicios', label: 'Servicios' },
+  { href: '#contacto', label: 'Contacto' },
+];
+---
+
+<header class="navbar" id="inicio">
+  <div class="container navbar-inner">
+    <a href="/" class="navbar-brand" aria-label="San Miguel Sepelios — Inicio">
+      <Image src={logo} alt="Logo San Miguel Sepelios" width={56} height={56} />
+    </a>
+
+    <nav class="navbar-nav" aria-label="Principal">
+      <button
+        class="navbar-toggle"
+        aria-expanded="false"
+        aria-controls="navbar-menu"
+        aria-label="Abrir menú"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar-menu" id="navbar-menu">
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href} class="navbar-link">
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="navbar-cta">
+          <a href={`tel:${contact.phoneHref}`} class="btn btn--oliva navbar-cta-btn">
+            Llamanos
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="navbar-social">
+      <a href={social.facebook} target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H8.5v3h2.5v7h2.5z"/></svg>
+      </a>
+      <a href={social.instagram} target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 8.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm0 5.3a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM15.8 8.1a.8.8 0 1 1-1.5 0 .8.8 0 0 1 1.5 0zM12 6.4c1.9 0 2.1 0 2.9.1.7 0 1.1.2 1.3.3.3.1.5.3.7.5.2.2.4.4.5.7.1.2.3.6.3 1.3.1.8.1 1 .1 2.9s0 2.1-.1 2.9c0 .7-.2 1.1-.3 1.3-.1.3-.3.5-.5.7-.2.2-.4.4-.7.5-.2.1-.6.3-1.3.3-.8.1-1 .1-2.9.1s-2.1 0-2.9-.1c-.7 0-1.1-.2-1.3-.3-.3-.1-.5-.3-.7-.5-.2-.2-.4-.4-.5-.7-.1-.2-.3-.6-.3-1.3C6.4 14.1 6.4 13.9 6.4 12s0-2.1.1-2.9c0-.7.2-1.1.3-1.3.1-.3.3-.5.5-.7.2-.2.4-.4.7-.5.2-.1.6-.3 1.3-.3C9.9 6.4 10.1 6.4 12 6.4zm5.5 9.9c.3-.8.2-2.5.1-3.4v-2c.1-1 .2-2.6-.1-3.4-.3-.8-1-1.5-1.9-1.8-.8-.3-2.4-.2-3.4-.1h-2c-1-.1-2.6-.2-3.4.1-.8.3-1.5 1-1.8 1.9-.3.8-.2 2.4-.1 3.4v2c-.1 1-.2 2.6.1 3.4.3.8 1 1.5 1.9 1.8.8.3 2.4.2 3.4.1h2c1 .1 2.6.2 3.4-.1.8-.3 1.5-1 1.8-1.9zM12 4.9c-1.9 0-2.2 0-3 .1-.9 0-1.6.2-2.2.4-.7.2-1.3.6-1.8 1.2C4.4 7.1 4 7.7 3.8 8.4c-.2.6-.4 1.3-.4 2.2-.1.8-.1 1.1-.1 3s0 2.2.1 3c0 .9.2 1.6.4 2.2.2.7.6 1.3 1.2 1.8.5.6 1.1 1 1.8 1.2.6.2 1.3.4 2.2.4.8.1 1.1.1 3 .1s2.2 0 3-.1c.9 0 1.6-.2 2.2-.4.7-.2 1.3-.6 1.8-1.2.6-.5 1-1.1 1.2-1.8.2-.6.4-1.3.4-2.2.1-.8.1-1.1.1-3s0-2.2-.1-3c0-.9-.2-1.6-.4-2.2-.2-.7-.6-1.3-1.2-1.8-.5-.6-1.1-1-1.8-1.2-.6-.2-1.3-.4-2.2-.4-.8-.1-1.1-.1-3-.1z"/></svg>
+      </a>
+    </div>
+  </div>
+  <hr class="navbar-rule" />
+</header>
+
+<script>
+  // Hamburger toggle — vanilla JS, no jQuery.
+  const toggle = document.querySelector<HTMLButtonElement>('.navbar-toggle');
+  const menu = document.getElementById('navbar-menu');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    toggle.setAttribute('aria-label', open ? 'Abrir menú' : 'Cerrar menú');
+    menu?.classList.toggle('open', !open);
+  });
+  // Close the menu when a link is chosen (mobile).
+  menu?.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('a')) {
+      menu.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(6px);
+  }
+
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: var(--nav-height);
+  }
+
+  .navbar-brand img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+  }
+
+  .navbar-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  .navbar-link {
+    color: var(--color-nav-texto);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.4rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .navbar-link:hover,
+  .navbar-link:focus-visible {
+    color: var(--color-verde-oscuro);
+    border-bottom-color: var(--color-verde-oscuro);
+  }
+
+  .navbar-cta-btn {
+    padding: 0.55rem 1.6rem;
+  }
+
+  .navbar-social {
+    display: flex;
+    gap: 0.75rem;
+    color: var(--color-verde-oscuro);
+  }
+
+  .navbar-social a {
+    color: inherit;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .navbar-social a:hover,
+  .navbar-social a:focus-visible {
+    background: var(--color-crema);
+    color: var(--color-verde-oscuro);
+  }
+
+  .navbar-rule {
+    border: none;
+    border-top: 2px solid var(--color-verde-oscuro);
+    margin: 0;
+    opacity: 0.35;
+  }
+
+  .navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .navbar-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--color-verde-oscuro);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  @media (max-width: 860px) {
+    .navbar-toggle {
+      display: flex;
+      order: 3;
+    }
+
+    .navbar-menu {
+      position: absolute;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: #ffffff;
+      border-bottom: 2px solid var(--color-crema);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      padding: 0.5rem 0;
+      display: none;
+    }
+
+    .navbar-menu.open {
+      display: flex;
+    }
+
+    .navbar-menu li {
+      padding: 0;
+    }
+
+    .navbar-link {
+      display: block;
+      padding: 0.85rem var(--container-pad);
+      border-bottom: none;
+    }
+
+    .navbar-cta {
+      padding: 0.75rem var(--container-pad);
+    }
+
+    .navbar-cta-btn {
+      display: block;
+    }
+
+    .navbar-social {
+      order: 2;
+      margin-left: auto;
+      margin-right: 0.5rem;
+    }
+  }
+</style>

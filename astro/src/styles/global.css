@@ -1,0 +1,179 @@
+/* ============================================================
+   San Miguel Sepelios — Design tokens
+   Palette taken from the current site (Nicepage export):
+   dark green titles, olive headings/buttons, cream card bg,
+   tan footer/hero buttons.
+   ============================================================ */
+
+:root {
+  /* Palette */
+  --color-verde-oscuro: #497164; /* titles, accents, social icons */
+  --color-oliva: #858772; /* h2, plan cards */
+  --color-oliva-texto: #7e816b; /* h6 headings, submit button, footer text */
+  --color-crema: #f1f0e2; /* nosotros/form card backgrounds */
+  --color-tostado: #e4d0ac; /* footer bg, hero buttons */
+  --color-tostado-hover: #e8c97f; /* hero button hover */
+  --color-nav-texto: #2e2f31; /* navbar links */
+  --color-texto: #111111; /* body text */
+  --color-fondo: #ffffff; /* page background */
+  --color-fondo-suave: #f2f2f2; /* alternating section background */
+
+  /* Typography */
+  --font-body: 'Open Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Roboto', 'Segoe UI', system-ui, sans-serif;
+
+  /* Buttons (from current site): uppercase, 700, 0.875rem, ls 1px, radius 30px */
+  --btn-radius: 30px;
+  --btn-font-size: 0.875rem;
+  --btn-letter-spacing: 1px;
+
+  /* Layout */
+  --container-max: 1140px;
+  --container-pad: clamp(1rem, 4vw, 2rem);
+  --section-gap: clamp(3rem, 8vw, 5.5rem);
+  --nav-height: 84px;
+}
+
+/* ---------- Reset (minimal, modern) ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+a {
+  color: var(--color-verde-oscuro);
+}
+
+/* ---------- Shared utilities ---------- */
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.section {
+  padding-block: var(--section-gap);
+}
+
+.section--suave {
+  background: var(--color-fondo-suave);
+}
+
+.section-title {
+  color: var(--color-oliva);
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+  color: var(--color-oliva-texto);
+  text-align: center;
+  max-width: 60ch;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+}
+
+/* Buttons: uppercase, 700, 0.875rem, letter-spacing 1px, radius 30px */
+.btn {
+  display: inline-block;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--btn-font-size);
+  letter-spacing: var(--btn-letter-spacing);
+  border-radius: var(--btn-radius);
+  padding: 0.9rem 2.6rem;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.btn--tostado {
+  background: var(--color-tostado);
+  color: var(--color-nav-texto);
+}
+
+.btn--tostado:hover,
+.btn--tostado:focus-visible {
+  background: var(--color-tostado-hover);
+}
+
+.btn--oliva {
+  background: var(--color-oliva-texto);
+  color: #ffffff;
+}
+
+.btn--oliva:hover,
+.btn--oliva:focus-visible {
+  background: var(--color-verde-oscuro);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-verde-oscuro);
+  border-color: var(--color-verde-oscuro);
+}
+
+.btn--outline:hover,
+.btn--outline:focus-visible {
+  background: var(--color-verde-oscuro);
+  color: #ffffff;
+}
+
+.u-title {
+  font-family: var(--font-heading);
+  color: var(--color-verde-oscuro);
+  font-weight: 900;
+}
