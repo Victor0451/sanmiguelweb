@@ -1,6 +1,7 @@
 ---
 import PlanCard from './PlanCard.astro';
 import { planes } from '../data/planes';
+import { contact } from '../data/site';
 ---
 
 <section class="section section--suave" id="servicios" aria-labelledby="servicios-title">
@@ -17,57 +18,68 @@ import { planes } from '../data/planes';
         ))
       }
     </div>
+
+    <div class="planes-cta">
+      <p class="planes-cta-text">
+        Todos nuestros planes incluyen cobertura de sepelio para vos y tu grupo
+        familiar. Consultá por condiciones, alcance y formas de pago.
+      </p>
+      <div class="planes-cta-actions">
+        <a href={contact.whatsapp} target="_blank" rel="noopener" class="btn btn--oliva">
+          Consultar por WhatsApp
+        </a>
+        <a href="#contacto" class="btn btn--outline">Dejanos tu consulta</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
   .planes-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.75rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
   }
 
-  /* 5 cards on a 3-col grid: last row centers its 2 cards */
-  .planes-grid > :nth-child(4) {
-    grid-column: 1 / 2;
+  .planes-cta {
+    background: var(--color-crema);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    text-align: center;
+    display: grid;
+    gap: 1.25rem;
+    justify-items: center;
+    box-shadow: 0 6px 18px rgba(17, 17, 17, 0.08);
   }
 
-  @media (min-width: 961px) {
+  .planes-cta-text {
+    max-width: 62ch;
+    color: var(--color-nav-texto);
+  }
+
+  .planes-cta-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (max-width: 960px) {
     .planes-grid {
-      grid-template-columns: repeat(6, 1fr);
-    }
-    .planes-grid > * {
-      grid-column: span 2;
-    }
-    .planes-grid > :nth-child(4) {
-      grid-column: 2 / span 2;
-    }
-    .planes-grid > :nth-child(5) {
-      grid-column: 4 / span 2;
-    }
-  }
-
-  @media (max-width: 960px) and (min-width: 601px) {
-    .planes-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .planes-grid > :nth-child(4) {
-      grid-column: auto;
-    }
-    .planes-grid > :last-child {
-      grid-column: 1 / -1;
-      max-width: 420px;
-      margin-inline: auto;
-      width: 100%;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
   @media (max-width: 600px) {
     .planes-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
-    .planes-grid > :nth-child(4) {
-      grid-column: auto;
+  }
+
+  @media (max-width: 380px) {
+    .planes-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
