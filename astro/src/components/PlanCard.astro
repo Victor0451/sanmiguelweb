@@ -1,0 +1,59 @@
+---
+import type { Plan } from '../data/planes';
+
+interface Props {
+  plan: Plan;
+  featured?: boolean;
+}
+
+const { plan, featured = false } = Astro.props;
+---
+
+<article class:list={['plan-chip', { 'plan-chip--featured': featured }]}>
+  <span class="plan-code">{plan.PLAN}</span>
+  <h3 class="plan-name">{plan.DESCRIP}</h3>
+</article>
+
+<style>
+  .plan-chip {
+    background: var(--color-oliva);
+    color: var(--color-crema);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(17, 17, 17, 0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .plan-chip:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(17, 17, 17, 0.16);
+  }
+
+  .plan-chip--featured {
+    background: var(--color-verde-oscuro);
+  }
+
+  .plan-code {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: var(--color-tostado);
+    color: var(--color-nav-texto);
+    border-radius: 999px;
+    padding: 0.2rem 0.75rem;
+  }
+
+  .plan-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-crema);
+    line-height: 1.3;
+  }
+</style>

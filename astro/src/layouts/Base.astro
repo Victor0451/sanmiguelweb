@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import { site, contact, social } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = site.title, description = site.description } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.legalName,
+  alternateName: site.name,
+  description,
+  email: contact.email,
+  telephone: contact.phoneHref,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: contact.address.street,
+    addressLocality: contact.address.city,
+    addressRegion: contact.address.region,
+    addressCountry: contact.address.country,
+  },
+  openingHours: 'Mo-Fr 09:00-13:00',
+  sameAs: [social.facebook, social.instagram],
+};
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#497164" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="es_AR" />
+
+    <!-- Fonts: Open Sans (body) + Roboto (headings), matching current site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
